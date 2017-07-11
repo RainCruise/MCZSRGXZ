@@ -1,0 +1,391 @@
+
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+		<style type="text/css">
+            .inputfile {
+                width: 0px;
+                height: 0px;
+                opacity: 0;
+                overflow: hidden;
+                position: absolute;
+                z-index: -1;
+            }
+            .inputfile + label {
+                font-family: STXinwei;
+                font-size: 25px;
+                font-weight: bold;
+                color: white;
+                background-color: black;
+                display: inline-block;
+                border-style: groove;
+                border-color: black;
+            }
+            .inputfile:focus + label,
+            .inputfile + label:hover {
+                background: #AADFFD;
+                border-color: #78C3F3;
+                color: #004974;
+                text-decoration: none;
+            }
+        </style>
+		<!-- Meta Tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<!-- Title -->
+		<title>Send Message | MCZSRGXZ</title>
+
+		
+		<!-- Favicon -->
+		{% load staticfiles %} 
+		<link rel="shortcut icon" type="image/x-icon" href="{% static "img/web_logo.ico" %}">
+		
+		<!-- Stylesheets -->
+		{% load staticfiles %} 
+		<link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet" type="text/css">
+		{% load staticfiles %} 
+		<link href="{% static "css/fontello.css" %}" rel="stylesheet" type="text/css">
+		{% load staticfiles %} 
+		<link href="{% static "css/flexslider.css" %}" rel="stylesheet" type="text/css">
+		{% load staticfiles %} 
+		<link href="{% static "js/revolution-slider/css/settings.css" %}" rel="stylesheet" type="text/css" media="screen" />
+		{% load staticfiles %} 
+		<link href="{% static "css/owl.carousel.css" %}" rel="stylesheet" type="text/css">
+		{% load staticfiles %} 
+		<link href="{% static "css/responsive-calendar.css" %}" rel="stylesheet" type="text/css">
+		{% load staticfiles %} 
+		<link href="{% static "css/chosen.css" %}" rel="stylesheet" type="text/css">
+		{% load staticfiles %} 
+		<link href="{% static "jackbox/css/jackbox.min.css" %}" rel="stylesheet" type="text/css" />
+		{% load staticfiles %} 
+		<link href="{% static "css/cloud-zoom.css" %}" rel="stylesheet" type="text/css" />
+		{% load staticfiles %} 
+		<link href="{% static "css/style.css" %}" rel="stylesheet" type="text/css">
+
+		
+		<style type="text/css">
+			.no-fouc {display:none;}
+	  	</style>
+		
+		<!-- jQuery -->
+		{% load staticfiles %} 
+		<script src="{% static "js/jquery-1.11.0.min.js" %}"></script>
+		{% load staticfiles %} 
+		<script src="{% static "js/jquery-ui-1.10.4.min.js" %}"></script>
+		
+		<!-- Preloader -->
+		{% load staticfiles %} 
+		<script src="{% static "js/jquery.queryloader2.min.js" %}"></script>
+
+
+		<script type="text/javascript">
+		    window.onload=function(){
+		        var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+                    var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+                    return v.toString(16);
+                    });
+		        document.getElementById("uuid").value=uuid;
+		    }
+	    </script>
+		<script>
+			function send_message_submit() {
+				var v_message_title = document.getElementById("message_title").value;
+				var v_message_contents = document.getElementById("message_contents").value;
+                var v_platforms = "";
+                var v_uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+                    var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+                    return v.toString(16);
+                    });
+                var v_file = document.getElementById("file").value;
+                vv = v_file.split("\\");
+                ff = (String)(vv[2]);
+                v_message = "/TITLE:"+v_message_title+":TITLE/" + "/CONTENTS:"+v_message_contents+":CONTENTS/" + "/FILE:"+ff+":FILE/"+"/UUID:"+v_uuid+":UUID/"
+				$.ajax({
+					type : 'POST',
+					data : {
+                        message : v_message
+					},
+                    success: function (arg){
+						alert("Submit Success!");
+					}
+				});
+			}
+		</script>
+		<script type="text/javascript">
+		$('html').addClass('no-fouc');
+		
+		$(document).ready(function(){
+			
+			$('html').show();
+			
+			var window_w = $(window).width();
+			var window_h = $(window).height();
+			var window_s = $(window).scrollTop();
+			
+			$("body").queryLoader2({
+				backgroundColor: '#f2f4f9',
+				barColor: '#63b2f5',
+				barHeight: 4,
+				percentage:false,
+				deepSearch:true,
+				minimumTime:1000,
+				onComplete: function(){
+					
+					$('.animate-onscroll').filter(function(index){
+					
+						return this.offsetTop < (window_s + window_h);
+						
+					}).each(function(index, value){
+						
+						var el = $(this);
+						var el_y = $(this).offset().top;
+						
+						if((window_s) > el_y){
+							$(el).addClass('animated fadeInDown').removeClass('animate-onscroll');
+							setTimeout(function(){
+								$(el).css('opacity','1').removeClass('animated fadeInDown');
+							},2000);
+						}
+						
+					});
+					
+				}
+			});
+			
+		});
+		</script>
+		
+	</head>
+	
+	<body class="sticky-header-on tablet-sticky-header boxed-layout">
+	
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	}(document, 'script', 'facebook-jssdk'));</script>		
+		<!-- Container -->
+		<div class="container">
+			
+			
+			<!-- Header -->
+			<header id="header" class="animate-onscroll">
+				
+				<!-- Main Header -->
+				<div id="main-header">
+					
+					<div class="container">
+					  
+					<div class="row">
+						
+						
+						
+						<!-- Logo -->
+						<div id="logo" class="col-lg-3 col-md-3 col-sm-3">
+							
+							{% load staticfiles %} 
+							<a href="../send_message.html"><img src="{% static "img/logo1.png" %}"alt="Logo"style="position:absolute; left:10px; top:-80px; "></a>
+							
+						</div>
+						<!-- /Logo -->
+						
+						
+						
+						<!-- Main Quote -->
+						<div class="col-lg-5 col-md-4 col-sm-4">
+							
+							<blockquote>Aller Anfang ist schwer.</blockquote>
+							
+						</div>
+						<!-- /Main Quote -->
+															
+					</div>
+					
+					</div>
+					
+				</div>
+				<!-- /Main Header -->
+				
+				<!-- Lower Header -->
+				<div id="lower-header">
+					
+					<div class="container">
+					
+					<div id="menu-button">
+						<div>
+						<span></span>
+						<span></span>
+						<span></span>
+						</div>
+						<span>Menu</span>
+					</div>
+					
+					<ul id="navigation">
+						
+						<!-- Send Message -->
+						<li class="current-menu-item">
+							<a href="../send_message.html">Send Message</a>
+						</li>
+						<!-- /Send Message -->
+						
+						
+						<!-- History -->
+						<li >						
+								<li><a href="../history.html">History</a></li>							
+						</li>
+						<!-- /History -->
+						
+						<!-- About -->
+						<li >						
+							<li><a href="../about.html">About</a></li>				
+						</li>
+						<!-- /About -->							
+					</ul>					
+					</div>					
+				</div>
+				<!-- /Lower Header -->
+								
+			</header>
+			<!-- /Header -->
+
+
+		<section id="content">
+			
+			
+			<!-- Page Heading -->
+			<section class="section page-heading animate-onscroll">
+				
+				<h1>Send Message</h1>
+				<p class="breadcrumb"><a href="">Home</a> / Send Message</p>
+				
+			</section>
+			<!-- Page Heading -->
+					
+			
+			<!-- Section -->
+			<section class="section full-width-bg gray-bg">
+				
+				<div class="row">
+					
+					<div class="col-lg-9 col-md-9 col-sm-8">
+						
+						<div class="animate-onscroll">
+							<h3 class="no-margin-top">Make a message</h3>
+							<p>You are supposed to fill the following lines if you want to send messages~<br></p>
+						</div>
+						
+						<form action="">
+						
+							<div class="row">
+								<div class="col-lg-6 col-md-6 col-sm-12 animate-onscroll">
+									<h5>Message Details</h5>
+									<label>Message Title</label>
+									<input type="text" id="message_title">
+									<br><br>
+									<label>Receivers : </label>
+									<input type="file" name="file" id = "file" class = "inputfile"><label for="file">Browser</label>
+									<br><br>
+									<label>Message Contents*<br>
+<small>(Details of your message)</small></label>
+									<textarea rows="8" id="message_contents" name="contents"></textarea>
+								</div>
+								<div class="col-lg-6 col-md-6 col-sm-12 animate-onscroll">
+									<br><br><br><br>
+								    <br><br><br><br>
+									<h5>What are your platforms?</h5>
+									<input type="radio" id="jiguang" name="myradio"  value="jiguang"><label for="jiguang">极光</label>
+                                    <input type="radio" id="getui" name="myradio" checked value="getui"><label for="getui">个推</label>
+								</div>
+							</div>
+							
+							<div class="align-center animate-onscroll">
+								<input type="submit" value="Submit" id = "submit_button" onclick="send_message_submit()">
+							</div>
+						
+						</form>
+						
+					</div>
+					
+				</div>
+				
+			</section>
+			<!-- /Section -->
+		
+		</section>
+
+
+			<!-- Footer -->
+			<footer id="footer">
+				
+				<!-- Main Footer -->
+				<div id="main-footer">
+					
+					<div class="row">
+						
+						<div>	
+							<h4>Ornithology in a World of Flux</h4>
+							
+							<p> It was only a bird call at evening, unidentified, <br>
+								As I came from the spring with water, across the rocky back-pasture; <br>
+								But I stood so still sky above was not stiller than sky in pail-water.
+								 <br><br>
+								Years pass, all places and faces fade,some people have died, <br>
+								And I stand in a far land, the evening still,and am at last sure <br>
+								That I miss more that stillness at bird-call than some things that were to fail later. 
+							</p>
+							
+						</div>
+						
+					</div>
+					
+				</div>
+				<!-- /Main Footer -->
+				
+				<!-- Lower Footer -->
+				<div id="lower-footer">
+					
+					<div class="row">
+						
+						<div class="col-lg-4 col-md-4 col-sm-4 animate-onscroll">
+						
+							<p class="copyright">© 2016 All Rights Reserved.<a href="" target="_blank" title="没错这是软工小组">没错这是软工小组</a> - Collect from <a href="" title="没错这是软工小组的模板" target="_blank">没错这是软工小组的模板</a></p>
+							
+						</div>
+						
+						<div class="col-lg-8 col-md-8 col-sm-8 animate-onscroll">
+							
+						</div>
+						
+					</div>
+					
+				</div>
+				<!-- /Lower Footer -->
+			
+			</footer>
+			<!-- /Footer -->
+			
+			<!-- Back To Top -->
+			<a href="#" id="button-to-top"><i class="icons icon-up-dir"></i></a>
+		
+		</div>
+		<!-- /Container -->	
+	
+		<!-- JavaScript -->
+		
+		<!-- Bootstrap -->
+		{% load staticfiles %} 
+		<script type="text/javascript" src="{% static "js/bootstrap.min.js" %}"></script>
+
+		<!-- Modernizr -->
+		{% load staticfiles %} 
+		<script type="text/javascript" src="{% static "js/modernizr.js" %}"></script>
+
+		{% load staticfiles %} 
+		<script type="text/javascript" src="{% static "js/script.js" %}"></script>
+	
+	</body>
+
+</html>

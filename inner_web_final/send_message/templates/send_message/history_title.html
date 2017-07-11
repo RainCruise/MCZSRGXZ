@@ -1,0 +1,352 @@
+
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+		
+		<!-- Meta Tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<!-- Title -->
+		<title>History | MCZSRGXZ</title>
+		
+		<!-- Favicon -->
+		{% load staticfiles %} 
+		<link rel="shortcut icon" type="image/x-icon" href="{% static "img/web_logo.ico" %}">
+		
+		<!-- Stylesheets -->
+		{% load staticfiles %} 
+		<link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet" type="text/css">
+		{% load staticfiles %} 
+		<link href="{% static "css/fontello.css" %}" rel="stylesheet" type="text/css">
+		{% load staticfiles %} 
+		<link href="{% static "css/flexslider.css" %}" rel="stylesheet" type="text/css">
+		{% load staticfiles %} 
+		<link href="{% static "js/revolution-slider/css/settings.css" %}" rel="stylesheet" type="text/css" media="screen" />
+		{% load staticfiles %} 
+		<link href="{% static "css/owl.carousel.css" %}" rel="stylesheet" type="text/css">
+		{% load staticfiles %} 
+		<link href="{% static "css/responsive-calendar.css" %}" rel="stylesheet" type="text/css">
+		{% load staticfiles %} 
+		<link href="{% static "css/chosen.css" %}" rel="stylesheet" type="text/css">
+		{% load staticfiles %} 
+		<link href="{% static "jackbox/css/jackbox.min.css" %}" rel="stylesheet" type="text/css" />
+		{% load staticfiles %} 
+		<link href="{% static "css/cloud-zoom.css" %}" rel="stylesheet" type="text/css" />
+		{% load staticfiles %} 
+		<link href="{% static "css/style.css" %}" rel="stylesheet" type="text/css">
+
+		
+		<style type="text/css">
+			.no-fouc {display:none;}
+	  	</style>
+
+
+		<!-- jQuery -->
+		{% load staticfiles %} 
+		<script src="{% static "js/jquery-1.11.0.min.js" %}"></script>
+		{% load staticfiles %} 
+		<script src="{% static "js/jquery-ui-1.10.4.min.js" %}"></script>
+		
+		<!-- Preloader -->
+		{% load staticfiles %} 
+		<script src="{% static "js/jquery.queryloader2.min.js" %}"></script>
+
+        <script>
+            function submit_form() {
+{#                document.getElementById("message_contents").value="kajajaj";#}
+                var haha = document.getElementById("input_uuid").value;
+                $.ajax({
+					type : 'GET',
+					data : {uuid : haha},
+                    contentType: "application/json; charset=utf-8",
+                    success: function (arg){
+						alert(arg);
+                        var m = arg.split("//");
+{#                        alert(m[0]);#}
+{#                        alert(m[1]);#}
+{#                        alert(m[2]);#}
+{#                        alert(m[3]);#}
+                        $("#message_contents").html(m[0]);
+                        $("#number_of_receivers").html(m[1]);
+                        document.getElementById("number_of_receivers").value=m[1];
+                        $("#number_of_devices").html(m[2]);
+                        document.getElementById("number_of_devices").value=m[12];
+                        $("#number_of_arrival").html(m[3]);
+                        document.getElementById("number_of_arrival").value=m[3];
+					}
+				});
+                return false;
+            }
+       </script>
+
+		<script type="text/javascript">
+		$('html').addClass('no-fouc');
+		
+		$(document).ready(function(){
+			
+			$('html').show();
+			
+			var window_w = $(window).width();
+			var window_h = $(window).height();
+			var window_s = $(window).scrollTop();
+			
+			$("body").queryLoader2({
+				backgroundColor: '#f2f4f9',
+				barColor: '#63b2f5',
+				barHeight: 4,
+				percentage:false,
+				deepSearch:true,
+				minimumTime:1000,
+				onComplete: function(){
+					
+					$('.animate-onscroll').filter(function(index){
+					
+						return this.offsetTop < (window_s + window_h);
+						
+					}).each(function(index, value){
+						
+						var el = $(this);
+						var el_y = $(this).offset().top;
+						
+						if((window_s) > el_y){
+							$(el).addClass('animated fadeInDown').removeClass('animate-onscroll');
+							setTimeout(function(){
+								$(el).css('opacity','1').removeClass('animated fadeInDown');
+							},2000);
+						}
+						
+					});
+					
+				}
+			});
+			
+		});
+		</script>
+		
+	</head>
+	
+	<body class="sticky-header-on tablet-sticky-header boxed-layout">
+	
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	}(document, 'script', 'facebook-jssdk'));</script>		
+		<!-- Container -->
+		<div class="container">
+			
+			<!-- Header -->
+			<header id="header" class="animate-onscroll">
+				
+				<!-- Main Header -->
+				<div id="main-header">
+					
+					<div class="container">
+					  
+					<div class="row">
+						
+						<!-- Logo -->
+						<div id="logo" class="col-lg-3 col-md-3 col-sm-3">
+							
+							{% load staticfiles %} 
+							<a href=""><img src="{% static "img/logo1.png" %}"alt="Logo"style="position:absolute; left:10px; top:-80px; "></a>
+							
+						</div>
+						<!-- /Logo -->
+
+						<!-- Main Quote -->
+						<div class="col-lg-5 col-md-4 col-sm-4">
+							
+							<blockquote>Auf Regen folgt Sonnenschein.</blockquote>
+							
+						</div>
+						<!-- /Main Quote -->
+															
+					</div>
+					
+					</div>
+					
+				</div>
+				<!-- /Main Header -->
+				
+				<!-- Lower Header -->
+				<div id="lower-header">
+					
+					<div class="container">
+					
+					<div id="menu-button">
+						<div>
+						<span></span>
+						<span></span>
+						<span></span>
+						</div>
+						<span>Menu</span>
+					</div>
+					
+					<ul id="navigation">
+						
+						<!-- Send Message -->
+						<li>
+							<a href="../send_message.html">Send Message</a>
+						</li>
+						<!-- /Send Message -->
+						
+						<!-- History -->
+						<li >
+						
+								<li class="current-menu-item"><a href="../history.html">History</a></li>
+							
+						</li>
+						<!-- /History -->
+						
+						<!-- About -->
+						<li >
+						
+							<li><a href="../about.html">About</a></li>
+							
+						</li>
+						<!-- /About -->							
+					</ul>					
+					</div>					
+				</div>
+				<!-- /Lower Header -->
+								
+			</header>
+			<!-- /Header -->
+
+		<section id="content">
+			
+			<!-- Page Heading -->
+			<section class="section page-heading animate-onscroll">
+				
+				<h1>History</h1>
+				<p class="breadcrumb"><a href="../send_message.html">Home</a> / History</p>
+				
+			</section>
+			<!-- Page Heading -->
+
+			<!-- Section -->
+			<section class="section full-width-bg gray-bg">
+				
+				<div class="row">
+					
+					<div class="col-lg-9 col-md-9 col-sm-8">
+						
+						<div class="animate-onscroll">
+							<h3 class="no-margin-top">You can get history records here~</h3>
+							<br><br>
+						</div>
+						
+						<form action="" onsubmit="return submit_form()" name="history_form">
+						
+							<div class="row">
+								
+								<div class="col-lg-9 col-md-9 col-sm-8 animate-onscroll">
+
+									<label>Input Your UUID : </label>
+									<input type="text" id="input_uuid" name="input_uuid">
+									<input type="submit"  value="Submit" >&nbsp;&nbsp;&nbsp;<input type="submit" value="Refresh" onclick="history_refresh()">
+									<br><br>
+
+									<label>Your Message Contents:<br>
+									<textarea rows="8" cols="90" id="message_contents" name="message_contents"></textarea><br><br>
+
+									<label>Number of Receivers :</label>
+									<output id="number_of_receivers">
+									<br><br>
+									<label>Number of Devices :</label>
+									<output id="number_of_devices">
+									<br><br>
+									<label>Number of Arrival :</label>
+									<output id="number_of_arrival">
+									<br><br>
+								</div>								
+							
+							</div>
+						
+						</form>
+						
+					</div>
+					
+				</div>
+				
+			</section>
+			<!-- /Section -->
+		
+		</section>
+
+			<!-- Footer -->
+			<footer id="footer">
+				
+				<!-- Main Footer -->
+				<div id="main-footer">
+					
+					<div class="row">
+						
+						<div>	
+							<h4>Ornithology in a World of Flux</h4>
+							
+							<p> It was only a bird call at evening, unidentified, <br>
+								As I came from the spring with water, across the rocky back-pasture; <br>
+								But I stood so still sky above was not stiller than sky in pail-water.
+								 <br><br>
+								Years pass, all places and faces fade,some people have died, <br>
+								And I stand in a far land, the evening still,and am at last sure <br>
+								That I miss more that stillness at bird-call than some things that were to fail later. 
+							</p>
+							
+						</div>
+						
+					</div>
+					
+				</div>
+				<!-- /Main Footer -->
+
+				<!-- Lower Footer -->
+				<div id="lower-footer">
+					
+					<div class="row">
+						
+						<div class="col-lg-4 col-md-4 col-sm-4 animate-onscroll">
+						
+							<p class="copyright">© 2016 All Rights Reserved.<a href="../send_message.html" target="_blank" title="没错这是软工小组">没错这是软工小组</a> - Collect from <a href="../send_message.html" title="没错这是软工小组的模板" target="_blank">没错这是软工小组的模板</a></p>
+							
+						</div>
+						
+						<div class="col-lg-8 col-md-8 col-sm-8 animate-onscroll">
+							
+						</div>
+						
+					</div>
+					
+				</div>
+				<!-- /Lower Footer -->
+			
+			</footer>
+			<!-- /Footer -->
+			
+			<!-- Back To Top -->
+			<a href="#" id="button-to-top"><i class="icons icon-up-dir"></i></a>
+		
+		</div>
+		<!-- /Container -->	
+	
+		<!-- JavaScript -->
+		
+		<!-- Bootstrap -->
+		{% load staticfiles %} 
+		<script type="text/javascript" src="{% static "js/bootstrap.min.js" %}"></script>
+		
+		<!-- Modernizr -->
+		{% load staticfiles %} 
+		<script type="text/javascript" src="{% static "js/modernizr.js" %}"></script>
+
+		{% load staticfiles %} 
+		<script type="text/javascript" src="{% static "js/script.js" %}"></script>
+		
+	</body>
+
+</html>
